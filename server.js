@@ -3,6 +3,8 @@ var express           = require('express'),
     bodyParser        = require('body-parser'),
     mongoose          = require('mongoose'),
     meetupsController = require('./server/controllers/meetups-controller');
+	
+var port = process.env.PORT || 8080;
 
 mongoose.connect('mongodb://localhost:27017/mean-demo');
 
@@ -18,6 +20,6 @@ app.use('/js', express.static(__dirname + '/client/js'));
 app.get('/api/meetups', meetupsController.list);
 app.post('/api/meetups', meetupsController.create);
 
-app.listen(3000, function() {
+app.listen(port, function() {
   console.log('I\'m Listening...');
 })
